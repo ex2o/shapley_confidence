@@ -130,3 +130,29 @@ ggplot(data = shp_year) +
     fatten=1, alpha=0.3, width=0.3, linetype=0,
     aes(y=Shapley, ymin = CIL, ymax = CIU, x = feature,
         colour = year, fill = year))
+
+# Add bootstrap to application --------------------------------------------
+
+pfx <- "data_shapley_"
+shp_fourway_b <- read.csv(paste0(path, pfx, "fourway_split_20200927.csv"))
+
+# Preparing long format
+shp_fourway_long1 <- select(shp_fourway_b, Shapley, CIL, CIU, type, year, feature)
+shp_fourway_long1$`CI type` <- "asym"
+shp_fourway_long2 <- select(shp_fourway_b, Shapley, bCIL, bCIU, type, year, feature)
+shp_fourway_long2$`CI type` <- "boot"
+colnames(shp_fourway_long2) <- colnames(shp_fourway_long1)
+shp_fourway_long <- rbind(shp_fourway_long1, shp_fourway_long2)
+
+# The data for this was transformed in four groups: by year/dist
+# Bootstrap and asymptotic CIs are side-by-side
+pdf(file="realestate_shapley_ba.pdf",width=5,height=4)
+ggplot(data = shp_fourway_long) +
+  geom_point(aes(x = feature, y = Shapley, shape = type)) +
+  geom_crossbar(
+    fatten=0, alpha=0.3, width=0.3, position = "dodge",
+    aes(y=Shapley, ymin = CIL, ymax = CIU, x = feature,
+        linetype = `CI type`, fill = type, group = `CI type`)) +
+  facet_grid(year ~ .)
+dev.off()
+
