@@ -3,7 +3,7 @@ All data (in .csv and .rds format), figures (in .pdf format) and code (in the R 
 
 The [Monte Carlo](Julia/MC_produce_22122019.jl) simulation [results](Julia/results) and [Shapley values](Julia/Shapley.jl) were calculated in [Julia](Julia), because this worked out to be much faster than doing it in R, even when we tried with [parallel processing](Shapley_noC.R), and even when we [used C via Rcpp](R/Shapley_C.R).
 
-The [figures](R/Figures) (including Monte Carlo and benchmark figures), and some [exploratory analysis](R/Real_estate_applications.R) of the real estate data, were produced in [R](R). Shapley values for the real estate data were [produced in Julia](Julia/Real_estate_application.jl).
+The [figures](R/Figures) (including Monte Carlo and benchmark figures), and some [exploratory analysis](R/Real_estate_applications.R) of the real estate data, were produced in [R](R). For the real estate data, Shapley values with asymptotic and boostrap confidence intervals were [produced in Julia](Julia/Real_estate_application.jl).
 
 Enjoy! Feel free to contact me if you have any questions or concerns.
 
