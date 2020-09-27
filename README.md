@@ -5,5 +5,5 @@ The [Monte Carlo](Julia/MC_produce_22122019.jl) simulation [results](Julia/resul
 
 The [figures](R/Figures) (including Monte Carlo and benchmark figures), and some [exploratory analysis](R/Real_estate_applications.R) of the real estate data, were produced in [R](R). For the real estate data, Shapley values with asymptotic and boostrap confidence intervals were [produced in Julia](Julia/Real_estate_application.jl).
 
-Enjoy! Feel free to contact me if you have any questions or concerns.
+Enjoy! Feel free to contact [Daniel Fryer](https://danielvfryer.com) if you have any questions or concerns.
 
