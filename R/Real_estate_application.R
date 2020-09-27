@@ -143,6 +143,9 @@ shp_fourway_long2 <- select(shp_fourway_b, Shapley, bCIL, bCIU, type, year, feat
 shp_fourway_long2$`CI type` <- "boot"
 colnames(shp_fourway_long2) <- colnames(shp_fourway_long1)
 shp_fourway_long <- rbind(shp_fourway_long1, shp_fourway_long2)
+shp_fourway_long$type <- factor(shp_fourway_long$type, 
+                                levels = c("near","far"))
+
 
 # The data for this was transformed in four groups: by year/dist
 # Bootstrap and asymptotic CIs are side-by-side
